@@ -1,0 +1,356 @@
+@keyframes disappear {
+  from {
+    opacity: 1;
+    z-index: 999;
+  }
+  to {
+    opacity: 0;
+    z-index: -999;
+  }
+}
+@keyframes rotation {
+  from {
+    transform: translateX(-50%) translateY(-50%);
+    transform-origin: center;
+  }
+  to {
+    transform: translateX(-50%) translateY(-50%) rotate(360deg);
+    transform-origin: center;
+  }
+}
+@keyframes movement {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-60rem);
+  }
+}
+@keyframes arrival {
+  from {
+    transform: translateX(-60rem);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+li {
+  list-style: none;
+}
+.loadwrp {
+  width: 100%;
+  height: 100%;
+  background-color: #24253f;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  animation: disappear 1s forwards paused;
+}
+.loadwrp div {
+  display: flex;
+  align-items: center;
+  margin: 20rem auto;
+  width: 12rem;
+  height: 7rem;
+}
+.loadwrp div .butterfly {
+  padding: 1rem 0 1rem 1rem;
+  width: 5rem;
+  height: 5rem;
+}
+.loadwrp div .dot {
+  padding: 1rem 1rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  opacity: 0;
+}
+html {
+  background-color: #fff;
+}
+body {
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  flex-wrap: wrap;
+  width: 95rem;
+  background-color: #fff;
+  background: url(mywebImage/bgi.png) no-repeat;
+  background-size: cover;
+}
+.sp {
+  width: 18rem;
+  border: 1px solid #000;
+}
+.sp img {
+  width: 18rem;
+  height: 3.2rem;
+}
+.sp p {
+  padding: 3rem 1rem;
+  color: skyblue;
+  font-weight: 600;
+}
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 5rem 0 0rem;
+  width: 62rem;
+}
+.wrapper .left {
+  position: relative;
+  padding: 0 2.5rem 0 2.5rem;
+  border-left: 1px solid #000;
+  border-bottom: 1px solid #000;
+  box-shadow: 0 3px 4.5px 0;
+}
+.wrapper .left .CD {
+  position: relative;
+  width: 5.5rem;
+  height: 5.5rem;
+  border-radius: 50%;
+  background-image: url(mywebImage/guangdie.webp);
+  background-size: cover;
+  margin: 2.5rem 0 0 0;
+  box-shadow: 2px 5px 10px 1px rgba(0, 0, 0, 0.5);
+}
+.wrapper .left .CD img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 3.8rem;
+  height: 3.8rem;
+  border-radius: 50%;
+  animation: rotation 10s linear infinite paused;
+}
+.wrapper .left .music {
+  position: absolute;
+  padding: 1rem 0 0 0;
+  top: 35%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+}
+.wrapper .left .music button {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: none;
+  box-shadow: 2px 5px 10px 1px rgba(0, 0, 0, 0.5);
+}
+.wrapper .left .music button img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  animation-play-state: paused;
+}
+.wrapper ::selection {
+  color: rgba(146, 108, 157, 0.4);
+  background-color: skyblue;
+}
+.wrapper .right {
+  display: flex;
+  box-shadow: 1px 4.5px 6px 0;
+}
+.wrapper .right .nav {
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(1rem);
+}
+.wrapper .right .nav li {
+  list-style: none;
+  height: 3.125rem;
+  width: 6rem;
+  text-align: center;
+  line-height: 3.125rem;
+}
+.wrapper .right .nav li a {
+  text-decoration: none;
+  color: #000;
+  font-weight: 400;
+}
+.wrapper .right .nav li a:hover {
+  color: aqua;
+}
+.wrapper .right .banner {
+  width: 44.5rem;
+  height: 25rem;
+  background-color: orange;
+  background-image: url(mywebImage/Girls.jpg);
+  background-size: cover;
+}
+.wrapper .characters {
+  position: relative;
+  padding: 3rem 0;
+  width: 61rem;
+  height: 8rem;
+}
+.wrapper .characters ul {
+  display: flex;
+  width: 61rem;
+  justify-content: space-between;
+}
+.wrapper .characters ul li {
+  position: relative;
+  list-style: none;
+  width: 7rem;
+  height: 7rem;
+  text-align: center;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 1s;
+}
+.wrapper .characters ul li img {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.6rem;
+  transition: all 0.5s;
+}
+.wrapper .characters ul li .mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: all 0.5s;
+  /* 父级长宽的100% */
+  width: 100%;
+  height: 100%;
+  /* 渐变 */
+  background-color: transparent;
+  background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.35));
+}
+.wrapper .characters ul li .title {
+  position: absolute;
+  width: 100%;
+  height: 10%;
+  top: 90%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  z-index: 1;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 10%;
+}
+body .grass {
+  position: fixed;
+  top: 42.5rem;
+  width: 96rem;
+  height: 7rem;
+  transform: translateY(-50%);
+  z-index: 3;
+  background-image: url(mywebImage/grass.png);
+  background-size: cover;
+}
+.bigBox {
+  display: flex;
+  margin: 0 auto;
+  width: 60rem;
+  height: 41.7em;
+  overflow: hidden;
+}
+.bigBox .map {
+  position: relative;
+  padding: 0 5rem;
+  width: 50rem;
+  height: 41.7em;
+  animation: movement 5s linear forwards paused;
+}
+.bigBox .map img {
+  width: 50rem;
+  height: 41.7rem;
+}
+.bigBox .map .one {
+  position: absolute;
+  width: 3rem;
+  height: 3rem;
+  top: 31rem;
+  left: 28rem;
+}
+.bigBox .map .two {
+  position: absolute;
+  width: 3rem;
+  height: 3rem;
+  top: 37rem;
+  left: 20rem;
+}
+.bigBox .map .three {
+  position: absolute;
+  width: 3rem;
+  height: 3rem;
+  top: 31rem;
+  left: 31rem;
+}
+.bigBox .map .four {
+  position: absolute;
+  width: 3rem;
+  height: 3rem;
+  top: 33rem;
+  left: 34rem;
+}
+.bigBox .map .five {
+  position: absolute;
+  width: 3rem;
+  height: 3rem;
+  top: 38rem;
+  left: 24rem;
+}
+.bigBox .map .six {
+  position: absolute;
+  width: 3rem;
+  height: 3rem;
+  top: 35rem;
+  left: 27rem;
+}
+.bigBox .map .seven {
+  position: absolute;
+  width: 3rem;
+  height: 3rem;
+  top: 27rem;
+  left: 18rem;
+}
+.bigBox .map .eight {
+  position: absolute;
+  width: 3rem;
+  height: 3rem;
+  top: 30rem;
+  left: 14rem;
+}
+.bigBox ul {
+  display: flex;
+  width: 465.6rem;
+}
+.bigBox ul li {
+  display: flex;
+  width: 60rem;
+  justify-content: space-between;
+  height: 41.7rem;
+  animation: movement 5s linear forwards paused;
+}
+.bigBox ul li img {
+  width: 29.1rem;
+  height: 41.7rem;
+}
+.wrapper .characters li:hover .mask {
+  opacity: 1;
+}
+.wrapper .characters li:hover img {
+  width: 120%;
+  height: 120%;
+}
+.bottom {
+  width: 96rem;
+  height: 7rem;
+}
